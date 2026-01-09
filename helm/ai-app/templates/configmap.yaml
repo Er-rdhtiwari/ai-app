@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-app-config
+  labels:
+    app: ai-app
+    environment: {{ .Values.env }}
+data:
+  environment: {{ .Values.env | quote }}
+  backend-url: "http://{{ .Values.backend.name }}:{{ .Values.backend.service.port }}"
+  frontend-url: "http://{{ .Values.frontend.name }}:{{ .Values.frontend.service.port }}"
+
+# Made with Bob
